@@ -2,14 +2,38 @@ import React from 'react';
 
 export default function PersonDetail({ person }) {
   // variable assignment
-  const personId = person.id.value;
+  const id = person.id.value;
+  const username = person.login.username;
+  const gender = person.gender;
+  const timeZoneDesc = person.location.timezone.description;
+
+  const profilePic = person.picture.large;
   // destructuring
   const { first, last } = person.name;
+  const { streetName, streetNumber } = person.location.street;
+  const { city, state, country, postalCode } = person.location;
+
   return (
-    <div key={personId}>
-      <h3>
+    <div>
+      <h5>
         {first} {last}
-      </h3>
+      </h5>
+      <section>
+        <img src={profilePic} alt={last} />
+        <p>
+          Username: <span>{username}</span>
+        </p>
+        <p>
+          Gender: <span>{gender}</span>
+        </p>
+        <p>
+          Time Zone Description: {timeZoneDesc}
+          <span>
+            {timeZoneDesc}, {streetName}, {streetNumber}, {city}, {state},{' '}
+            {country}, {postalCode}
+          </span>
+        </p>
+      </section>
     </div>
   );
 }

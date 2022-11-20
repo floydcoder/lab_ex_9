@@ -24,7 +24,7 @@ export default class Persons extends Component {
         <h4>User List</h4>
         {this.state.persons.map((person) => (
           <>
-            <PersonDetail person={person} />
+            <PersonDetail person={person} key={person.id.value} />
           </>
         ))}
       </div>
